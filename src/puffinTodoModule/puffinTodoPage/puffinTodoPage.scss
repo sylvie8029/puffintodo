@@ -1,0 +1,54 @@
+$screenWidth: 100vw;
+$screenHeight: 100vh;
+$navHeight: 60px;
+$footerHeight: 50px;
+$gridGap: 0.2em;
+$defaultPadding: 0.2em;
+
+.todo_page {
+  display: grid;
+  grid-gap: $gridGap;
+  grid-template-rows:
+    $navHeight calc(
+      #{$screenHeight} - #{$navHeight} - #{$footerHeight} - 4 * #{$gridGap}
+    )
+    $footerHeight;
+  grid-template-columns: 20% 40% 40%;
+  padding: $gridGap;
+
+  &--nav {
+    grid-row: 1/2;
+    grid-column: 1/4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      flex-basis: 30%;
+    }
+    &-add_todo_button {
+      border-radius: 3px;
+      margin-right: 1em;
+    }
+    &-add_todo_button:hover {
+      background-color: darkgray;
+      color: white;
+    }
+  }
+  &--todo_list {
+    display: flex;
+    flex-direction: column;
+    grid-row: 2/4;
+    grid-column: 1/4;
+    &-todos {
+      display: flex;
+      background-color: orange;
+      flex-direction: column;
+    }
+    &-dones {
+      background-color: greenyellow;
+    }
+  }
+}
