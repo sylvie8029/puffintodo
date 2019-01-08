@@ -1,19 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Todo from '../puffinTodos/puffinTodo';
 
-class TodoList extends React.Component {
+class Todo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
   render() {
-    return (
-      <div>
-        <Todo />
-      </div>
-    );
+    return <div>Todo Works!</div>;
   }
 }
 
@@ -23,4 +18,4 @@ const mapDispatchToProps = {};
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(TodoList);
+)(Todo);

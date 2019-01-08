@@ -1,25 +1,69 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './puffinTodoPage.scss';
+import { getAllTodosStart, addNewTodoStart } from '../todoActions';
 
 class PuffinTodoPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isAdding: false,
+      newTodoName: ''
+    };
   }
 
+  componentDidMount() {
+    this.props.getAllTodosStart();
+  }
+
+  onAddingButtonClicked = () => {
+    console.log(`ghhggffggffgfgfg:`);
+    this.setState({ isAdding: true });
+  };
+
+  onNewTodoNameInputChanged = event => {
+    this.setState({ newTodoName: event.target.value });
+  };
+  onSubmitButtonClicked = () => {
+    this.props.addNewTodoStart({
+      todoName: this.state.newTodoName,
+      status: 'todo'
+    });
+    this.setState({ newTodoName: '', isAdding: false });
+  };
   render() {
     return (
       <div className="todo_page">
         <div className="todo_page--nav">
           <div className="todo_page--nav-logo">Puffin Todo</div>
-          <div className="todo_page--nav-add_todo_bar">addingbar</div>
 
-          <button className="todo_page--nav-add_todo_button">Add Todo</button>
+          <div
+            className="todo_page--nav-add_todo_bar"
+            hidden={!this.state.isAdding}
+          >
+            Name:
+            <input
+              className="todo_page--nav-add_todo_bar-input"
+              value={this.state.newTodoName}
+              onChange={this.onNewTodoNameInputChanged}
+            />
+            <button
+              className="todo_page--nav-add_todo_bar-submit_Button"
+              onClick={this.onSubmitButtonClicked}
+            >
+              Submit
+            </button>
+          </div>
+          <button
+            className="todo_page--nav-add_todo_button"
+            onClick={this.onAddingButtonClicked}
+          >
+            Add Todo
+          </button>
         </div>
 
         <div className="todo_page--todolist">
-          <div className="puffin_todo_page--"> Todos list works!!!! </div>
+          <div> Todos list works!!!! </div>
           <div className="todo_page--todolist-todos" />
           <div>Done List works!!!</div>
           <div className="todo_page--todolist-dones" />
@@ -28,12 +72,16 @@ class PuffinTodoPage extends React.Component {
     );
   }
 }
-export default PuffinTodoPage;
 
-// const mapStateToProps = store => {};
-// const mapDispatchToProps = {};
+const mapStateToProps = store => {
+  return {};
+};
+const mapDispatchToProps = {
+  getAllTodosStart,
+  addNewTodoStart
+};
 
-// export default connect(
-
-//   mapStateToProps,
-//   mapDispatchToProps
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PuffinTodoPage);
