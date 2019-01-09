@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './puffinTodoPage.scss';
 import { getAllTodosStart, addNewTodoStart } from '../todoActions';
+import PuffinTodoList from '../puffinTodoList/puffinTodoList';
+import Todo from '../puffinTodos/puffinTodo';
 
 class PuffinTodoPage extends React.Component {
   constructor(props) {
@@ -15,9 +17,11 @@ class PuffinTodoPage extends React.Component {
   componentDidMount() {
     this.props.getAllTodosStart();
   }
+  componentWillReceiveProps(newProps) {
+    this.setState({ Todos: newProps.Todos });
+  }
 
   onAddingButtonClicked = () => {
-    console.log(`ghhggffggffgfgfg:`);
     this.setState({ isAdding: true });
   };
 
@@ -63,10 +67,16 @@ class PuffinTodoPage extends React.Component {
         </div>
 
         <div className="todo_page--todolist">
-          <div> Todos list works!!!! </div>
-          <div className="todo_page--todolist-todos" />
-          <div>Done List works!!!</div>
-          <div className="todo_page--todolist-dones" />
+          <div> Todos List </div>
+
+          <div className="todo_page--todolist-todos">
+            <PuffinTodoList type="todo" />
+          </div>
+          <div>Done List</div>
+
+          <div className="todo_page--todolist-dones">
+            <PuffinTodoList type="done" />
+          </div>
         </div>
       </div>
     );

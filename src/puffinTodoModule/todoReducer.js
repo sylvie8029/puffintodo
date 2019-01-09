@@ -1,58 +1,58 @@
-import * as todoActionTypes from './todoActionTypes';
+import * as TodoActionTypes from './todoActionTypes';
 
 const initialState = {
-  todos: []
+  Todos: []
 };
 
-export default function todoReducer(state = initialState, action) {
+export default function TodoReducer(state = initialState, action) {
   switch (action.type) {
-    case todoActionTypes.GET_ALL_TODOS_START: {
+    case TodoActionTypes.GET_ALL_TODOS_START: {
       return {
         ...state
       };
     }
 
-    case todoActionTypes.GET_ALL_TODOS_SUCCESS: {
+    case TodoActionTypes.GET_ALL_TODOS_SUCCESS: {
       return {
         ...state,
-        todos: action.payload
+        Todos: action.payload
       };
     }
 
-    case todoActionTypes.GET_ALL_TODOS_FAILURE: {
+    case TodoActionTypes.GET_ALL_TODOS_FAILURE: {
       return {
         ...state,
         error: action.payload
       };
     }
 
-    case todoActionTypes.ADD_NEW_TODO_SUCCESS: {
+    case TodoActionTypes.ADD_NEW_TODO_SUCCESS: {
       return {
         ...state,
         todos: [...state.todos, action.payload]
       };
     }
 
-    case todoActionTypes.ADD_NEW_TODO_FAILURE: {
+    case TodoActionTypes.ADD_NEW_TODO_FAILURE: {
       return {
         ...state,
         error: action.payload
       };
     }
-    case todoActionTypes.DELETE_TODO_SUCCESS: {
+    case TodoActionTypes.DELETE_TODO_SUCCESS: {
       return {
         ...state,
         todos: [...state.todos.filter(item => item.id !== action.payload)]
       };
     }
 
-    case todoActionTypes.DELETE_TODO_FAILURE: {
+    case TodoActionTypes.DELETE_TODO_FAILURE: {
       return {
         ...state,
         error: action.payload
       };
     }
-    case todoActionTypes.UPDATE_TODO_SUCCESS: {
+    case TodoActionTypes.UPDATE_TODO_SUCCESS: {
       const todos = state.todos.map(item => {
         if (item.id === action.payload.id) {
           return action.payload;
@@ -66,7 +66,7 @@ export default function todoReducer(state = initialState, action) {
       };
     }
 
-    case todoActionTypes.UPDATE_TODO_FAILURE: {
+    case TodoActionTypes.UPDATE_TODO_FAILURE: {
       return {
         ...state,
         error: action.payload
