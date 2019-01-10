@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Todo from '../puffinTodos/puffinTodo';
+import './puffinTodoList.scss';
 
 class PuffinTodoList extends React.Component {
   constructor(props) {
@@ -9,7 +10,9 @@ class PuffinTodoList extends React.Component {
       Todos: props.Todos
     };
   }
+
   componentWillReceiveProps(newProps) {
+    console.log(`newProps:`, newProps);
     this.setState({ Todos: newProps.Todos });
   }
 
@@ -20,8 +23,13 @@ class PuffinTodoList extends React.Component {
 
     // let doneList = this.state.Todos.filter(todo => todo.status === 'done');
     return (
-      <div>
-        <div>
+      <div className="todolist">
+        <div className="todolist--list_title">
+          <div>Id</div>
+          <div>Name</div>
+          <div>Edit</div>
+        </div>
+        <div className="todolist--list_table">
           {PuffinTodoList.map(todo => {
             return <Todo key={todo.id} todo={todo} />;
           })}
@@ -37,6 +45,7 @@ class PuffinTodoList extends React.Component {
 }
 
 const mapStateToProps = store => {
+  console.log(`list ---  mapState----store:`, store);
   return { Todos: store.Todos.Todos };
 };
 

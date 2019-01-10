@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateTodoStart } from '../todoActions';
+import { updateTodoStart, deleteTodoStart } from '../todoActions';
+import './puffinTodo.scss';
 
 class Todo extends React.Component {
   constructor(props) {
@@ -9,21 +10,36 @@ class Todo extends React.Component {
       todo: props.todo
     };
   }
-  onDoneButtonClicked = event => {
-    let newTodo = {
-      ...this.state.Todo,
+  onDoneButtonClicked = newTodo => {
+    this.props.updateTodoStart({
+      ...this.state.todo,
       status: 'done'
-    };
-    this.props.updateTodoStart(this.state.Todo.id, newTodo);
+    });
+  };
+
+  onDeleteButtonClicked = () => {
+    this.props.deleteTodoStart(this.props.todo.id);
   };
 
   render() {
     return (
-      <div>
-        <div>
-          -------- {this.state.todo.todoName} - {this.state.todo.id}
+      <div className="puffin_todo">
+        <div className="puffin_todo--id">{this.state.todo.id}</div>
+        <div className="puffin_todo--name">{this.state.todo.todoName}</div>
+        <div className="puffin_todo--edit">
+          <button
+            className="puffin_todo--edit-donebutton"
+            onClick={this.onDoneButtonClicked}
+          >
+            Done
+          </button>
+          <button
+            className="puffin_todo--edit-deletebutton"
+            onClick={this.onDeleteButtonClicked}
+          >
+            Delete
+          </button>
         </div>
-        <div className="todo--title">========={this.state.todo.todoName}</div>
       </div>
     );
   }
@@ -34,7 +50,8 @@ const mapStateToProps = () => {
 };
 
 const mapDispatchToProps = {
-  updateTodoStart
+  updateTodoStart,
+  deleteTodoStart
 };
 
 export default connect(

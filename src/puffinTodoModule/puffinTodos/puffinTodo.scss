@@ -1,0 +1,38 @@
+.puffin_todo {
+  display: flex;
+
+  justify-content: space-between;
+
+  border-bottom: 1px solid lightgray;
+  &--id {
+    display: flex;
+    margin: 5px 10px;
+
+    align-items: center;
+  }
+  &--name {
+    display: flex;
+    align-items: center;
+    margin: 0.5em 1em;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+  }
+  &--edit {
+    border: sienna;
+    align-items: center;
+    &-donebutton {
+      margin: 1em;
+    }
+    &-donebutton:hover {
+      background-color: gray;
+      color: white;
+    }
+    &-deletebutton {
+      margin: 1em;
+    }
+    &-deletebutton:hover {
+      background-color: gray;
+      color: white;
+    }
+  }
+}

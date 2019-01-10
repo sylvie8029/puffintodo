@@ -29,7 +29,7 @@ export default function TodoReducer(state = initialState, action) {
     case TodoActionTypes.ADD_NEW_TODO_SUCCESS: {
       return {
         ...state,
-        todos: [...state.todos, action.payload]
+        Todos: [...state.Todos, action.payload]
       };
     }
 
@@ -40,9 +40,20 @@ export default function TodoReducer(state = initialState, action) {
       };
     }
     case TodoActionTypes.DELETE_TODO_SUCCESS: {
+      console.log(`reducer---state:`, state);
+      console.log(`action.payload:`, action.payload);
+      state.Todos.map(item => {
+        console.log(`item.id:`, item.id);
+        console.log(`action.payload:`, action.payload);
+        console.log(`action.payload.id:`, action.payload.id);
+        console.log(
+          `item.id!==action.payload.id:`,
+          item.id !== action.payload.id
+        );
+      });
       return {
         ...state,
-        todos: [...state.todos.filter(item => item.id !== action.payload)]
+        Todos: state.Todos.filter(item => item.id !== action.payload.id)
       };
     }
 

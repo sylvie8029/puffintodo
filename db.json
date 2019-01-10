@@ -1,74 +1,9 @@
 {
-  "Todos": [
+  "todos": [
     {
       "id": 1,
       "todoName": "todo #1",
       "status": "done"
-    },
-    {
-      "todoName": "",
-      "status": "todo",
-      "id": 2
-    },
-    {
-      "todoName": "",
-      "status": "todo",
-      "id": 3
-    },
-    {
-      "todoName": "",
-      "status": "todo",
-      "id": 4
-    },
-    {
-      "todoName": "",
-      "status": "todo",
-      "id": 5
-    },
-    {
-      "todoName": "",
-      "status": "todo",
-      "id": 6
-    },
-    {
-      "todoName": "",
-      "status": "todo",
-      "id": 7
-    },
-    {
-      "todoName": "",
-      "status": "todo",
-      "id": 8
-    },
-    {
-      "todoName": "",
-      "status": "todo",
-      "id": 9
-    },
-    {
-      "todoName": "todo#1",
-      "status": "todo",
-      "id": 10
-    },
-    {
-      "todoName": "todo#2",
-      "status": "todo",
-      "id": 11
-    },
-    {
-      "todoName": "todo#3",
-      "status": "todo",
-      "id": 12
-    },
-    {
-      "todoName": "task#5",
-      "status": "todo",
-      "id": 13
-    },
-    {
-      "todoName": "kdsjhfa;jo",
-      "status": "todo",
-      "id": 14
     }
   ]
 }

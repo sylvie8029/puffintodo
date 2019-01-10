@@ -37,18 +37,27 @@ $defaultPadding: 0.2em;
       color: white;
     }
   }
-  &--todo_list {
+  &--todolist {
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
-    grid-row: 2/4;
+    grid-row: 2/3;
     grid-column: 1/4;
+
+    &-todos_title {
+      font-weight: bold;
+    }
+
     &-todos {
-      display: flex;
-      background-color: orange;
-      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+    &-dones_title {
+      font-weight: bold;
     }
     &-dones {
-      background-color: greenyellow;
+      flex: 1;
+      justify-content: space-between;
     }
   }
 }

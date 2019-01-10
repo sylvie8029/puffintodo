@@ -4,6 +4,7 @@ import './puffinTodoPage.scss';
 import { getAllTodosStart, addNewTodoStart } from '../todoActions';
 import PuffinTodoList from '../puffinTodoList/puffinTodoList';
 import Todo from '../puffinTodos/puffinTodo';
+import './puffinTodoPage.scss';
 
 class PuffinTodoPage extends React.Component {
   constructor(props) {
@@ -67,12 +68,12 @@ class PuffinTodoPage extends React.Component {
         </div>
 
         <div className="todo_page--todolist">
-          <div> Todos List </div>
+          <div className="todo_page--todolist-todos_title"> Todos </div>
 
           <div className="todo_page--todolist-todos">
             <PuffinTodoList type="todo" />
           </div>
-          <div>Done List</div>
+          <div className="todo_page--todolist-dones_title">Dones</div>
 
           <div className="todo_page--todolist-dones">
             <PuffinTodoList type="done" />
