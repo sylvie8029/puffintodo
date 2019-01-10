@@ -73,10 +73,10 @@ export function deleteTodoStart(id) {
   };
 }
 
-const deleteTodoSuccess = data => {
+const deleteTodoSuccess = id => {
   return {
     type: TodoActionTypes.DELETE_TODO_SUCCESS,
-    payload: data
+    payload: id
   };
 };
 const deleteTodoFailure = error => {
@@ -87,6 +87,8 @@ const deleteTodoFailure = error => {
 };
 
 export function updateTodoStart(id, newTodo) {
+  console.log(`id:`, id);
+  console.log(`newTodo:`, newTodo);
   return dispatch => {
     axios.put(`${BaseUrl}/todos/${id}/`, newTodo).then(
       res => {

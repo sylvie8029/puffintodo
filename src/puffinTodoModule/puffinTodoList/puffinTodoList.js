@@ -44,6 +44,7 @@ class PuffinTodoList extends React.Component {
 }
 
 const mapStateToProps = store => {
+  console.log(`store:`, store);
   return { todos: store.todos.todos };
 };
 

@@ -54,7 +54,7 @@ export default function TodoReducer(state = initialState, action) {
     }
     case TodoActionTypes.UPDATE_TODO_SUCCESS: {
       const todos = state.todos.map(item => {
-        if (item.id === action.payload) {
+        if (item.id === action.payload.id) {
           return action.payload;
         }
         return item;

@@ -8,19 +8,20 @@ class Todo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      Todo: props.Todo
+      Todo: props.todo
     };
   }
   onDoneButtonClicked = () => {
-    this.props.updateTodoStart({
-      ...this.state.todo,
+    console.log(`this.state.Todo:`, this.state.Todo);
+    this.props.updateTodoStart(this.state.Todo.id, {
+      ...this.state.Todo,
       status: 'done'
     });
   };
 
   onUndoButtonClicked = () => {
-    this.props.updateTodoStart({
-      ...this.state.todo,
+    this.props.updateTodoStart(this.state.Todo.id, {
+      ...this.state.Todo,
       status: 'todo'
     });
   };
@@ -38,21 +39,21 @@ class Todo extends React.Component {
         <div className="puffin_todo--id">{this.props.todo.id}</div>
         <div className="puffin_todo--name">{this.props.todo.todoName}</div>
         <div className="puffin_todo--edit_button_group">
-          {/* // (Todo.status = 'todo' ? ( */}
-          <button
-            className="puffin_todo--edit-donebutton"
-            onClick={this.onDoneButtonClicked}
-          >
-            Done
-          </button>
-          {/* ) : ( */}
-          <button
-            className="puffin_todo--edit-undobutton"
-            onClick={this.onUndoButtonClicked}
-          >
-            Undo
-          </button>
-          {/* ))  } */}
+          {this.props.todo.status === 'todo' ? (
+            <button
+              className="puffin_todo--edit-donebutton"
+              onClick={this.onDoneButtonClicked}
+            >
+              Done
+            </button>
+          ) : (
+            <button
+              className="puffin_todo--edit-undobutton"
+              onClick={this.onUndoButtonClicked}
+            >
+              Undo
+            </button>
+          )}
         </div>
 
         <button
