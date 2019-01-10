@@ -7,17 +7,16 @@ class PuffinTodoList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      Todos: props.Todos
+      todos: props.todos
     };
   }
 
   componentWillReceiveProps(newProps) {
-    console.log(`newProps:`, newProps);
-    this.setState({ Todos: newProps.Todos });
+    this.setState({ todos: newProps.todos });
   }
 
   render() {
-    let PuffinTodoList = this.state.Todos.filter(
+    let PuffinTodoList = this.state.todos.filter(
       todo => todo.status === this.props.type
     );
 
@@ -45,8 +44,7 @@ class PuffinTodoList extends React.Component {
 }
 
 const mapStateToProps = store => {
-  console.log(`list ---  mapState----store:`, store);
-  return { Todos: store.Todos.Todos };
+  return { todos: store.todos.todos };
 };
 
 const mapDispatchToProps = {};

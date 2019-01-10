@@ -4,7 +4,7 @@ import { BaseUrl } from '../config/common';
 
 export function getAllTodosStart(newTodo) {
   return dispatch => {
-    axios.get(`${BaseUrl}/Todos`).then(
+    axios.get(`${BaseUrl}/todos`).then(
       res => {
         if (res.status === 200) {
           dispatch(getAllTodosSuccess(res.data));
@@ -32,7 +32,7 @@ const getAllTodosFailure = error => {
 
 export function addNewTodoStart(newTodo) {
   return dispatch => {
-    axios.post(`${BaseUrl}/Todos`, newTodo).then(
+    axios.post(`${BaseUrl}/todos`, newTodo).then(
       res => {
         if (res.status === 201) {
           dispatch(addNewTodoSuccess(res.data));
@@ -60,7 +60,7 @@ const addNewTodoFailure = error => {
 
 export function deleteTodoStart(id) {
   return dispatch => {
-    axios.delete(`${BaseUrl}/Todos/${id}/`).then(
+    axios.delete(`${BaseUrl}/todos/${id}/`).then(
       res => {
         if (res.status === 200) {
           dispatch(deleteTodoSuccess(id));
@@ -88,7 +88,7 @@ const deleteTodoFailure = error => {
 
 export function updateTodoStart(id, newTodo) {
   return dispatch => {
-    axios.put(`${BaseUrl}/Todos/${id}/`, newTodo).then(
+    axios.put(`${BaseUrl}/todos/${id}/`, newTodo).then(
       res => {
         if (res.status === 200) {
           dispatch(updateTodoSuccess(res.data));
@@ -101,10 +101,10 @@ export function updateTodoStart(id, newTodo) {
   };
 }
 
-const updateTodoSuccess = newTodo => {
+const updateTodoSuccess = data => {
   return {
     type: TodoActionTypes.UPDATE_TODO_SUCCESS,
-    payload: newTodo
+    payload: data
   };
 };
 const updateTodoFailure = error => {

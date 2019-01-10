@@ -1,7 +1,7 @@
 import * as TodoActionTypes from './todoActionTypes';
 
 const initialState = {
-  Todos: []
+  todos: []
 };
 
 export default function TodoReducer(state = initialState, action) {
@@ -15,7 +15,7 @@ export default function TodoReducer(state = initialState, action) {
     case TodoActionTypes.GET_ALL_TODOS_SUCCESS: {
       return {
         ...state,
-        Todos: action.payload
+        todos: action.payload
       };
     }
 
@@ -29,7 +29,7 @@ export default function TodoReducer(state = initialState, action) {
     case TodoActionTypes.ADD_NEW_TODO_SUCCESS: {
       return {
         ...state,
-        Todos: [...state.Todos, action.payload]
+        todos: [...state.todos, action.payload]
       };
     }
 
@@ -40,20 +40,9 @@ export default function TodoReducer(state = initialState, action) {
       };
     }
     case TodoActionTypes.DELETE_TODO_SUCCESS: {
-      console.log(`reducer---state:`, state);
-      console.log(`action.payload:`, action.payload);
-      state.Todos.map(item => {
-        console.log(`item.id:`, item.id);
-        console.log(`action.payload:`, action.payload);
-        console.log(`action.payload.id:`, action.payload.id);
-        console.log(
-          `item.id!==action.payload.id:`,
-          item.id !== action.payload.id
-        );
-      });
       return {
         ...state,
-        Todos: state.Todos.filter(item => item.id !== action.payload.id)
+        todos: state.todos.filter(item => item.id !== action.payload)
       };
     }
 
@@ -65,7 +54,7 @@ export default function TodoReducer(state = initialState, action) {
     }
     case TodoActionTypes.UPDATE_TODO_SUCCESS: {
       const todos = state.todos.map(item => {
-        if (item.id === action.payload.id) {
+        if (item.id === action.payload) {
           return action.payload;
         }
         return item;

@@ -4,7 +4,7 @@ import TodoReducer from '../puffinTodoModule/todoReducer';
 
 const rootReducer = combineReducers({
   routerReducer,
-  Todos: TodoReducer
+  todos: TodoReducer
 });
 
 export default rootReducer;
