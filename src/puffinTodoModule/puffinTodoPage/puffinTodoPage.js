@@ -4,7 +4,6 @@ import './puffinTodoPage.scss';
 import { getAllTodosStart, addNewTodoStart } from '../todoActions';
 import PuffinTodoList from '../puffinTodoList/puffinTodoList';
 import Todo from '../puffinTodos/puffinTodo';
-import './puffinTodoPage.scss';
 
 class PuffinTodoPage extends React.Component {
   constructor(props) {
